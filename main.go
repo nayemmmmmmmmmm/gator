@@ -8,7 +8,12 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/cors"
 	"github.com/joho/godotenv"
+	"github.com/nayemmmmmmmmmm/gator/internal/database"
 )
+
+type apiConfig struct {
+	DB *database.Queries
+}
 
 func main() {
 
@@ -28,7 +33,7 @@ func main() {
 		ExposedHeaders:   []string{"Link"},
 		AllowCredentials: false,
 		MaxAge:           300,
-	})) 
+	}))
 
 	v1Router := chi.NewRouter()
 	v1Router.Get("/healthz", handlerReadiness)
